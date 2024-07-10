@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://github.com/Dchad99/k8s.git  # Can point to either a Helm chart repo or a git repo.
     targetRevision: main  # For Helm, this refers to the chart version.
-    path: kub/ # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
+    path: kub/kubernetes # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
 
   # Destination cluster and namespace to deploy the application
   destination:
@@ -25,7 +25,7 @@ spec:
   # Sync policy
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
-      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ). Automatic delete those resources that are not present in git repository
       selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
     syncOptions:     # Sync options which modifies sync behavior
     - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
