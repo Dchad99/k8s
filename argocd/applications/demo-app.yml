@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/Dchad99/k8s.git
     targetRevision: main
-    #path: src
+    path: ""
 
     helm:
       # Extra parameters to set (same as setting through values.yaml, but these take precedence)
