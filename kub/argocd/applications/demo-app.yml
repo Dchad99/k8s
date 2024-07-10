@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: demo-app
   namespace: argocd
+  # финалайзер нужен для того, чтобы когда вы удаляете апликейшн на argocd удалялись и ресурсы (pod/deployment/service and etc)
+  # otherwise it will be present after you delete an application on argocd ui
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -11,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/Dchad99/k8s.git
     targetRevision: main
-    path: kub/
+    path: kub/chart/demo
 
     helm:
       # Extra parameters to set (same as setting through values.yaml, but these take precedence)
